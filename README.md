@@ -2,6 +2,8 @@
 
 我常用的 AppleScript
 
+![](./assets/preview.jpg)
+
 ## 目录
 
 1. `happy-day.scpt`: 每天开机后运行, 功能:
