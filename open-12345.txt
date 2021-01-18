@@ -1,0 +1,38 @@
+set dirPath to "/Users/rmlzy/Documents/make_money/12345-fondtend"
+
+on quitApplication(name)
+	tell application name
+		quit
+	end tell
+end quitApplication
+
+on runCmdInNewTab(cmdStrs)
+	tell application "iTerm"
+		activate
+		delay 1
+		tell current window
+			create tab with default profile
+			tell current session
+				repeat with cmdStr in cmdStrs
+					write text cmdStr
+				end repeat
+			end tell
+		end tell
+	end tell
+end runCmdInNewTab
+
+on openChrome(URL)
+	tell application "Google Chrome"
+		activate
+		open location URL
+	end tell
+end openChrome
+
+# Fire
+quitApplication("iTerm")
+delay 1
+quitApplication("Webstorm")
+delay 1
+runCmdInNewTab({"pwd", "cd " & dirPath, "git pull", "npm run start"})
+runCmdInNewTab({"webstorm " & dirPath})
+openChrome("http://localhost:3000/")

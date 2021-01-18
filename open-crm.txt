@@ -1,0 +1,34 @@
+set fePath to "/Users/rmlzy/Documents/homedo/crm-home-webstatic"
+set nodePath to "/Users/rmlzy/Documents/homedo/crm-api-compositeservice"
+
+on quitApplication(name)
+	tell application name
+		quit
+	end tell
+end quitApplication
+
+on runCmdInNewTab(cmdStrs)
+	tell application "iTerm"
+		activate
+		delay 1
+		tell current window
+			create tab with default profile
+			tell current session
+				repeat with cmdStr in cmdStrs
+					write text cmdStr
+				end repeat
+			end tell
+		end tell
+	end tell
+end runCmdInNewTab
+
+# Fire
+quitApplication("iTerm")
+delay 1
+quitApplication("Webstorm")
+delay 1
+runCmdInNewTab({"pwd", "cd " & fePath, "git pull", "npm run dev"})
+runCmdInNewTab({"webstorm " & fePath})
+
+runCmdInNewTab({"pwd", "cd " & nodePath, "git pull", "npm run dev"})
+runCmdInNewTab({"webstorm " & nodePath})

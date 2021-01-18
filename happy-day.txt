@@ -1,0 +1,18 @@
+on quitApplication(name)
+	tell application name
+		quit
+	end tell
+end quitApplication
+
+on openApplication(name)
+	tell application name
+		activate
+	end tell
+end openApplication
+
+openApplication("Google Chrome")
+openApplication("WeChat")
+openApplication("DingTalk")
+openApplication("NeteaseMusic")
+openApplication("Quiver")
+openApplication("Clearview")
